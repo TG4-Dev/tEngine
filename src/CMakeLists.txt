@@ -20,7 +20,7 @@ target_include_directories(tengine
 target_sources(tengine
       PRIVATE
         core/Log.cpp
-)
+ "core/time/Clock.cpp")
 #find_package(fmt REQUIRED)
 #find_package(spdlog REQUIRED)
 
@@ -32,5 +32,5 @@ target_link_libraries(tengine
             glm::glm
 )
 
-add_executable(sandbox app/sandbox_main.cpp)
+add_executable(sandbox app/sandbox_main.cpp "core/time/Clock.cpp")
 target_link_libraries(sandbox PRIVATE tengine)
