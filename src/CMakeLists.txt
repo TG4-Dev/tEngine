@@ -1,5 +1,10 @@
 add_library(tengine STATIC)
 
+
+target_compile_definitions(tengine 
+  PRIVATE
+    SPDLOG_NO_EXCEPTIONS
+    SPDLOG_FMT_EXTERNAL)
 set(COMMON_FLAGS "-Wall -Werror -fno-expections")
 
 

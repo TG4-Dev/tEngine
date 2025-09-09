@@ -1,4 +1,3 @@
-#pragma once
 #include "Clock.hpp"
 
 namespace core::time {
