@@ -1,18 +1,17 @@
 #include "core/Log.hpp"
+#include "core/time/Clock.hpp"
 #include <cstdio>
 
 int main() {
+  core::time::Clock clock;
   core::Log::Init();
-  TE_CORE_TRACE("trace");
-  TE_CORE_INFO("info");
-  TE_CORE_WARN("warn");
-  TE_CORE_ERROR("error");
-  TE_CORE_CRITICAL("critical");
 
-  TE_TRACE("trace");
-  TE_INFO("info");
-  TE_WARN("warn");
-  TE_ERROR("error");
-  TE_CRITICAL("critical");
+  for (size_t i = 0; i < 100; i++) {
+    TE_TRACE("Tick: {}", clock.Tick());
+    TE_TRACE("Last Delta: {}", clock.LastDelta());
+    TE_TRACE("FPS: {}", clock.Fps());
+    TE_TRACE("Since start: {}", clock.SinceStart());
+  }
+
   return 0;
 }
