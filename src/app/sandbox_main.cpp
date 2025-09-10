@@ -13,5 +13,7 @@ int main() {
     TE_TRACE("Since start: {}", clock.SinceStart());
   }
 
+	//int* p = nullptr; *p = 5; //Можешь затестить санитайзер)
+
   return 0;
 }

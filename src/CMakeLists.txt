@@ -4,17 +4,20 @@ add_library(tengine STATIC)
 target_compile_definitions(tengine 
   PRIVATE
     SPDLOG_NO_EXCEPTIONS
-    SPDLOG_FMT_EXTERNAL)
-set(COMMON_FLAGS "-Wall -Werror -fno-expections")
-
+    SPDLOG_FMT_EXTERNAL
+)
 
 if (MSVC)
   target_compile_options(tengine PRIVATE /W4 /WX)
-elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
-        CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-      target_compile_options(tengine PRIVATE -Wall -Werror -fno-exceptions)
+elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	target_compile_options(tengine PRIVATE 
+		$<$<CONFIG:Release>:-Wall -Werror -fno-exceptions>
+		$<$<CONFIG:Debug>:-Wall -Werror -fsanitize=address,undefined>
+	)
+	target_link_options(tengine PUBLIC
+		$<$<CONFIG:Debug>:-Wall -Werror -fsanitize=address,undefined>
+	)
 endif()
-
 
 target_include_directories(tengine
       PUBLIC
