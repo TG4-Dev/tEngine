@@ -8,7 +8,7 @@ target_compile_definitions(tengine
 )
 
 if (MSVC)
-  target_compile_options(tengine PRIVATE /W4 /WX)
+  target_compile_options(tengine PRIVATE /W4 /WX /EHs-c-)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 	target_compile_options(tengine PRIVATE 
 		$<$<CONFIG:Release>:-Wall -Werror -fno-exceptions>
