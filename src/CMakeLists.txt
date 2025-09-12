@@ -38,6 +38,7 @@ target_link_libraries(tengine
             fmt::fmt
             spdlog::spdlog
             glm::glm
+			GTest::gtest_main
 )
 
 add_executable(sandbox app/sandbox_main.cpp "core/time/Clock.cpp")
