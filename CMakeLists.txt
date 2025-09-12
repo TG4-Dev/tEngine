@@ -19,7 +19,9 @@ option(TENGINE_BUILD_TOOLS "Build Tools" OFF)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(FetchDeps)
 
-
+enable_testing()
 
 
 add_subdirectory(src)
+
+add_subdirectory(tests)
