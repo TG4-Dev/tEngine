@@ -1,6 +1,6 @@
-#include "core/Log.hpp"
-#include "core/time/Clock.hpp"
-#include "platform/platform.hpp"
+#include <core/Log.hpp>
+#include <core/time/Clock.hpp>
+#include <platform/platform.hpp>
 #include <cstdio>
 
 int main() {
@@ -16,12 +16,27 @@ int main() {
   platform::window mainWindow;
   mainWindow.windowInit(args);
 
-  for (size_t i = 0; i < 10000; i++) {
-    TE_TRACE("Tick: {}", clock.Tick());
-    TE_TRACE("Last Delta: {}", clock.LastDelta());
-    TE_TRACE("FPS: {}", clock.Fps());
-    TE_TRACE("Since start: {}", clock.SinceStart());
+  SDL_Event event;
+  bool isRunning = true;
+
+  while(isRunning) {
+	platform::eventHandler(&event);
+	TE_TRACE("Tick: {}", clock.Tick());
+	switch(event.type) {
+		case SDL_EVENT_QUIT:
+			isRunning = false;
+			break;
+		default:
+			break;
+	}
   }
+
+  //for (size_t i = 0; i < 10000; i++) {
+  //  TE_TRACE("Tick: {}", clock.Tick());
+  //  TE_TRACE("Last Delta: {}", clock.LastDelta());
+  //  TE_TRACE("FPS: {}", clock.Fps());
+  //  TE_TRACE("Since start: {}", clock.SinceStart());
+  //}
 
   mainWindow.windowClear();
 

@@ -28,8 +28,9 @@ target_include_directories(tengine
 target_sources(tengine
       PRIVATE
         core/Log.cpp
- "core/time/Clock.cpp"
+		core/time/Clock.cpp
 		platform/window.cpp
+		platform/input.cpp
 )
 #find_package(fmt REQUIRED)
 #find_package(spdlog REQUIRED)
@@ -40,7 +41,6 @@ target_link_libraries(tengine
             fmt::fmt
             spdlog::spdlog
             glm::glm
-			GTest::gtest_main
 			SDL3::SDL3
 )
 
