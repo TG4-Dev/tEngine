@@ -1,4 +1,4 @@
-#include "platform/platform.hpp"
+#include "platform/window.hpp"
 
 namespace platform {
 
@@ -12,7 +12,6 @@ void window::windowInit(windowArg args) {
 void window::windowClear() {
 	if(window)
 		SDL_DestroyWindow(window);
-			
 }
 
 } //namespace platform
