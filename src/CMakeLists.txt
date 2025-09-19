@@ -41,7 +41,7 @@ target_link_libraries(tengine
             fmt::fmt
             spdlog::spdlog
             glm::glm
-			SDL3::SDL3
+			glfw
 )
 
 add_executable(sandbox app/sandbox_main.cpp "core/time/Clock.cpp")

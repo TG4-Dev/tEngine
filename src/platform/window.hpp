@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL3/SDL.h>
+#include <GLFW/glfw3.h>
 
 namespace platform {
 
@@ -14,9 +14,7 @@ class window {
 public:
 	void windowInit(windowArg args);
 	void windowClear();
-
-private:
-	SDL_Window *window;
+	GLFWwindow *window;
 };
 
 } //namespace platform

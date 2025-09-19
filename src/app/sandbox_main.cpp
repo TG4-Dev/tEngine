@@ -3,6 +3,12 @@
 #include <platform/platform.hpp>
 #include <cstdio>
 
+void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods){
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
+
+
 int main() {
   core::time::Clock clock;
   core::Log::Init();
@@ -16,19 +22,11 @@ int main() {
   platform::window mainWindow;
   mainWindow.windowInit(args);
 
-  SDL_Event event;
-  bool isRunning = true;
 
-  while(isRunning) {
-	platform::eventHandler(&event);
-	TE_TRACE("Tick: {}", clock.Tick());
-	switch(event.type) {
-		case SDL_EVENT_QUIT:
-			isRunning = false;
-			break;
-		default:
-			break;
-	}
+  glfwSetKeyCallback(mainWindow.window, key_callback);
+
+  while(!glfwWindowShouldClose(mainWindow.window)) {
+	  glfwPollEvents();
   }
 
   //for (size_t i = 0; i < 10000; i++) {

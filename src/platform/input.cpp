@@ -2,8 +2,6 @@
 
 namespace platform {
 
-bool eventHandler(SDL_Event* event) {
-	return SDL_PollEvent(event);
-}
+
 
 } //namespace platform

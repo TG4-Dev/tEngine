@@ -3,15 +3,19 @@
 namespace platform {
 
 void window::windowInit(windowArg args) {
-	if(!SDL_INIT_VIDEO){}
+	if(!glfwInit()){}
 
-	window = SDL_CreateWindow(args.title, args.width, args.height, SDL_WINDOW_VULKAN);
-	if(!window){}
+	window = glfwCreateWindow(args.width, args.height, args.title, NULL, NULL);
+	if(!window){
+		glfwTerminate();
+	}
 }
 
 void window::windowClear() {
 	if(window)
-		SDL_DestroyWindow(window);
+		glfwDestroyWindow(window);
+
+	glfwTerminate();
 }
 
 } //namespace platform
