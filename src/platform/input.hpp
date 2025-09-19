@@ -1,9 +1,8 @@
 #pragma once
 
-#include <SDL3/SDL.h>
+#include <GLFW/glfw3.h>
 
 namespace platform {
 
-bool eventHandler(SDL_Event* event);
 
 } //namespace platform
