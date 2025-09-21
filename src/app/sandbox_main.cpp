@@ -1,17 +1,22 @@
-#include <core/Log.hpp>
-#include <core/time/Clock.hpp>
-#include <platform/platform.hpp>
+#include "tengine.hpp"
+#include "core/Log.hpp"
 #include <cstdio>
 
-void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods){
+void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 }
 
+const float FIXED_LOGIC_STEP = 1.0f/60.0f; //60 fps logic
+
+void update() {
+	TE_INFO("Update Tick");
+}
 
 int main() {
   core::time::Clock clock;
   core::Log::Init();
+  platform::Init();
 
   platform::windowArg args {
 	"sandbox window",
@@ -25,8 +30,18 @@ int main() {
 
   glfwSetKeyCallback(mainWindow.window, key_callback);
 
+  float accumulator = 0.0f;
+
   while(!glfwWindowShouldClose(mainWindow.window)) {
 	  glfwPollEvents();
+
+	  while (accumulator >= FIXED_LOGIC_STEP) {
+		  update();
+		  TE_INFO("FPS: {}", clock.Fps());
+		  accumulator -= FIXED_LOGIC_STEP;
+	  }
+
+	  accumulator += clock.Tick();
   }
 
   //for (size_t i = 0; i < 10000; i++) {
