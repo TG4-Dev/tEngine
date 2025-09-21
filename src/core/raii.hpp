@@ -16,7 +16,7 @@ public:
 
   unique_handle(unique_handle &&other) noexcept
       : h_(other.h_), d_(std::move(other.d_)) {
-    other.h = {};
+    other.h_ = {};
   }
   unique_handle &operator=(unique_handle &&other) noexcept {
     if (this != &other) {

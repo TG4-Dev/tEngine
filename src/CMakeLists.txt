@@ -31,6 +31,7 @@ target_sources(tengine
 		core/time/Clock.cpp
 		platform/window.cpp
 		platform/input.cpp
+		platform/platform.cpp
 )
 #find_package(fmt REQUIRED)
 #find_package(spdlog REQUIRED)
