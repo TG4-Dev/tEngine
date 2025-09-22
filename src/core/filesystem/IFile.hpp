@@ -67,7 +67,13 @@ public:
   // TODO:
   // 1. Operator overloading 
   // For FileMode | & ^ ~
-  // For IFile ==
   //
+  bool operator==(std::shared_ptr<class IFile> f1, std::shared_ptr<class IFile> f2) {
+    if(!f1 || !f2) {
+      return false;
+    }
+
+    return f1->GetFileInfo() == f2->GetFileInfo();
+  }
 
 } // namespace filesystem
