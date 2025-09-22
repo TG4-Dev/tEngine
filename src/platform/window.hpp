@@ -4,17 +4,23 @@
 
 namespace platform {
 
-struct windowArg {
-	const char *title;
-	int width;
-	int height;
-};
+	struct windowArg {
+		const char *title = nullptr;
+		int width;
+		int height;
+	};
 
-class window {
-public:
-	void windowInit(windowArg args);
-	void windowClear();
-	GLFWwindow *window;
-};
+	class Window {
+	public:
+		Window();
+		~Window();
+
+		void windowInit(windowArg args);
+		void windowClear();
+
+		void windowUpdate();
+
+		GLFWwindow *window = nullptr;
+	};
 
 } //namespace platform
