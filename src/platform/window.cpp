@@ -3,19 +3,23 @@
 
 namespace platform {
 
-void window::windowInit(windowArg args) {
-	window = glfwCreateWindow(args.width, args.height, args.title, NULL, NULL);
-	if(!window){
-		TE_ERROR("ERROR: Window init");
-		glfwTerminate();
+	Window::Window(){}
+
+	Window::~Window() {
+		windowClear();
 	}
-}
 
-void window::windowClear() {
-	if(window)
-		glfwDestroyWindow(window);
+	void Window::windowInit(windowArg args) {
+		window = glfwCreateWindow(args.width, args.height, args.title, NULL, NULL);
+		if(!window){
+			TE_ERROR("ERROR: Window init");
+			glfwTerminate();
+		}
+	}
 
-	glfwTerminate();
-}
+	void Window::windowClear() {
+		if(window)
+			glfwDestroyWindow(window);
+	}
 
 } //namespace platform

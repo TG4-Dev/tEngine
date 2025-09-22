@@ -29,6 +29,7 @@ target_sources(tengine
       PRIVATE
         core/Log.cpp
 		core/time/Clock.cpp
+		core/application.cpp
 		platform/window.cpp
 		platform/input.cpp
 		platform/platform.cpp

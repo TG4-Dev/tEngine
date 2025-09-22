@@ -6,6 +6,8 @@
 
 namespace platform {
 
-void Init();
+	void Init();
+
+	void Exit();
 
 } // namespace platform
