@@ -1,4 +1,6 @@
 #include "application.hpp"
+#include "core/Log.hpp"
+#include "platform/platform.hpp"
 
 namespace core {
 

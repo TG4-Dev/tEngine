@@ -1,6 +1,7 @@
-#pragma once 
+#pragma once
 
-#include "tengine.hpp"
+#include "platform/window.hpp"
+#include "core/time/Clock.hpp"
 
 namespace core {
 
